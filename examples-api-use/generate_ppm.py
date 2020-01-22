@@ -2,7 +2,7 @@ import array
 
 # PPM header
 width = 256
-height = 128
+height = 16
 maxval = 255
 ppm_header = f'P6 {width} {height} {maxval}\n'
 
@@ -10,7 +10,7 @@ ppm_header = f'P6 {width} {height} {maxval}\n'
 image = array.array('B', [0, 0, 255] * width * height)
 
 # Fill with red the rectangle with origin at (10, 10) and width x height = 50 x 80 pixels
-for y in range(10, 90):
+for y in range(10, 15):
 	for x in range(10, 60):
 		index = 3 * (y * width + x)
 		image[index] = 255           # red channel
@@ -21,4 +21,4 @@ for y in range(10, 90):
 with open('blue_red_example.ppm', 'wb') as f:
 	f.write(bytearray(ppm_header, 'ascii'))
 	image.tofile(f)
-    print("Done")
+print("Done")
